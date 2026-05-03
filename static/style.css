@@ -1,0 +1,27 @@
+.navbar{
+    background-color: grey;
+}
+
+.cormorant-garamond-<uniquifier> {
+  font-family: "Cormorant Garamond", serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+
+.navbar{
+   font-family: "Cormorant Garamond", serif;
+}
+
+.text-center {
+    font-family: "Cormorant Garamond", serif;
+}
+
+h1{
+   font-family: "Cormorant Garamond", serif;
+}
+
+p{
+   font-family: "Cormorant Garamond", serif;
+}

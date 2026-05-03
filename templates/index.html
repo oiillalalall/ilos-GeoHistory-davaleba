@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %} Welcome to GeoHistory {% endblock %}
+
+{%block content%}
+
+<h1 class="text-center">welcome to GeoHistory</h1>
+<hr class="border border-dark border-1 opacity-100">
+
+<div class="row">
+    {% for geohistory in geohistory %}
+    <div class="col-12 d-flex text-center justify-content-center">
+        <div class="card w-75 mb-3" style="width: 18rem;">
+            <img src="/static/images/{{geohistory['img']}}" alt="img" height="500">
+            <div class="card-body">
+                <h5 class="card-title">{{geohistory["name"]}}</h5>
+                <hr>
+                <h5 class="card-title">{{geohistory["describe"]}}</h5>
+                <a href="/geohistory/{{ geohistory['id'] }}" class="btn btn-primary">Read More</a>
+            </div>
+        </div>
+    </div>
+    {%endfor%}
+</div>
+
+{%endblock%}
+
+
