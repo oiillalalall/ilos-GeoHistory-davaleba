@@ -11,12 +11,16 @@
     {% for geohistory in geohistory %}
     <div class="col-12 d-flex text-center justify-content-center">
         <div class="card w-75 mb-3" style="width: 18rem;">
-            <img src="/static/images/{{geohistory['img']}}" alt="img" height="500">
+            <img src="{{ url_for('static', filename='images/' ~ (geohistory.image or 'add_image.png')) }}" alt="img" height="500">
             <div class="card-body">
-                <h5 class="card-title">{{geohistory["name"]}}</h5>
+                <h5 class="card-title">{{ geohistory.history_title }}</h5>
                 <hr>
-                <h5 class="card-title">{{geohistory["describe"]}}</h5>
-                <a href="/geohistory/{{ geohistory['id'] }}" class="btn btn-primary">Read More</a>
+                <h5 class="card-title">{{ geohistory.description }}</h5>
+                <a href="/geohistory/{{ geohistory.id }}" class="btn btn-primary">Read More</a>
+                {%if role == "admin" %}
+                    <a href="/delete_history/{{ geohistory.id }}" class="btn btn-danger">delete this shit bro 😭🫵</a>
+                    <a href="/edit_history/{{ geohistory.id }}" class="btn btn-info">edit bro</a>
+                {%endif%}
             </div>
         </div>
     </div>
