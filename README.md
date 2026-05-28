@@ -1,0 +1,1 @@
+eheeem davamate edit da cotati gavaswore database mainc kowlobs mainc mawvalebs mainc iketeba deprersiuli bavshvivit magram cota moeshva deprersias (anti-deprerss wamlebi davalevine da) xoda egaa da egg kide bevrri ragaca maq gasaketebeli prrofile acc damaxsovreba details pageze rro inforrmacia amoagdos magis gaketebac minda mara mzrb 
