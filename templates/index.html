@@ -15,7 +15,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{ geohistory.history_title }}</h5>
                 <hr>
-                <h5 class="card-title">{{ geohistory.description }}</h5>
+                <h5 class="card-title">{{ geohistory.description | truncate(120) }}</h5>
                 <a href="/geohistory/{{ geohistory.id }}" class="btn btn-primary">Read More</a>
                 {%if role == "admin" %}
                     <a href="/delete_history/{{ geohistory.id }}" class="btn btn-danger">delete this shit bro 😭🫵</a>

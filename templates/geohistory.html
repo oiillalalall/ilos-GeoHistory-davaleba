@@ -3,9 +3,16 @@
 {% block title%} History {% endblock %}
 
 {%block content%}
-<h1><strong>details about:</strong> {{ place["name"] }}</h1>
+<h1><strong>details about:</strong> {{ place.history_title }}</h1>
 <hr>
-<p>{{ place["history"] }} </p>
+<h5>{{ place.description }} </h5>
+<hr>
+<h1> Reviews: </h1>
+<h5>
+    {% for review in reviews %}
+   <p> {{ review.text }} </p>
+    {% endfor %}
+</h5>
 {%endblock%}
 
 

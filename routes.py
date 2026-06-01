@@ -2,7 +2,7 @@ from ext import db, app
 from flask import render_template, request, redirect, url_for
 from forms import registerForm, HistoryForm
 from os import path
-from models import History
+from models import History, Review
 
 profiles = []
 
@@ -31,12 +31,11 @@ def search():
     if not search_text:
         return redirect(url_for("home"))
 
-    search_text = search_text.lower().strip()
+    results = History.query.filter(
+        History.history_title.ilike(f'%{search_text}%')
+    ).all()
 
-    if search_text in page:
-        return redirect((page[search_text]))
-
-    return redirect(url_for("home"))
+    return render_template('index.html', geohistory=results, role="admin")
 
 @app.route('/about')
 def about():
@@ -57,10 +56,8 @@ def add_history():
             img.save(directory)
             new_history.image = img.filename
 
-        db.session.add(new_history)
-        db.session.commit()
+        new_history.create()
         return redirect("/")
-
     return render_template("add_history.html", form=form)
 
 @app.route('/edit_history/<int:id>', methods=['GET', 'POST'])
@@ -76,7 +73,7 @@ def edit_history(id):
             img.save(directory)
             history.image = img.filename
 
-        db.session.commit()
+        history.save()
         return redirect("/")
     return render_template("edit_history.html", form=form)
 
@@ -84,8 +81,7 @@ def edit_history(id):
 @app.route("/delete_history/<int:id>")
 def delete_history(id):
     history = History.query.get(id)
-    db.session.delete(history)
-    db.session.commit()
+    history.delete()
     return redirect("/")
 
 
@@ -110,4 +106,5 @@ def register():
 @app.route('/geohistory/<int:geo_id>')
 def see_geo(geo_id):
     geo = History.query.get(geo_id)
-    return render_template('geohistory.html', place=geo)
+    reviews = Review.query.filter(Review.history_id == geo_id).all()
+    return render_template('geohistory.html', place=geo, reviews=reviews)
