@@ -1,1 +1,1 @@
-es aris ilos proeqtri (sxva brenchebshimaq atvirtuli axali versiebi)
+egaa da egg maxinjia magram moqmedebs mainc
