@@ -4,22 +4,54 @@
 
 
 {%block content%}
+
+<div class="container">
+    {% for errors in form.errors.values() %}
+    <div class="alert alert-danger">
+        {% for error in errors%}
+            {{error}}
+        {% endfor %}
+    </div>
+    {% endfor %}
+</div>
+
 <div class="container d-flex justify-content-center align-items-center vh-100">
     <div class="card shadow-sm" style="width: 100%; max-width: 400px; border-radius: 15px;">
         <div class="card-body p-4">
             <h3 class="text-center mb-4">Register</h3>
-            <form>
+            <form method="POST" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
                 <div class="mb-3">
-                    <label class="form-label">Full Name</label>
-                    <input type="text" class="form-control" placeholder="Jane Doe">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Email</label>
-                    <input type="email" class="form-control" placeholder="name@example.com">
+                    <label class="form-label">Username</label>
+                    {{ form.username(class="form-control", placeholder=form.username.label.text) }}
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Password</label>
-                    <input type="password" class="form-control">
+                    {{ form.password(class="form-control", placeholder=form.password.label.text) }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Confirm Password</label>
+                    {{ form.confirm_password(class="form-control", placeholder=form.confirm_password.label.text) }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    {{ form.email(class="form-control", placeholder=form.email.label.text) }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Mobile Number</label>
+                    {{ form.mobile(class="form-control", placeholder=form.mobile.label.text) }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Birth Date</label>
+                    {{ form.birthdate(class="form-control", placeholder=form.birthdate.label.text) }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Gender</label>
+                    {{ form.gender(class="form-control", placeholder=form.gender.label.text) }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Country</label>
+                    {{ form.country(class="form-control", placeholder=form.country.label.text) }}
                 </div>
                 <div class="d-grid mt-4">
                     <button type="submit" class="btn btn-primary">Create Account</button>

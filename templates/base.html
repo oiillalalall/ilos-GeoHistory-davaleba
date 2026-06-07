@@ -31,22 +31,47 @@
                 <li class="nav-item">
                     <a class="nav-link" style="font-size: 20px;" href="/about"><strong>About Us</strong></a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="font-size: 20px;" href="/add_history"><strong>Add</strong></a>
+                </li>
             </ul>
 
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search">
-                <button class="btn btn-outline-light" type="submit">Search</button>
-            </form>
+                <form action="/search" method="get" class="d-flex" >
+                    <input class="form-control me-2" type="search" name="text" placeholder="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end ms-auto">
+                <div class="btn-group">
+                {% if  current_user.is_authenticated %}
+                <a href="/logout" class="btn btn btn-outline-light" type="button">Log out</a>
+                <a href="/profile" class="btn btn btn-outline-light" type="button">Profile</a>
+                {% else %}
                 <a href="/login" class="btn btn btn-outline-light" type="button">Log In</a>
                 <a href="/register" class="btn btn btn-outline-light" type="button">Register</a>
+                {% endif %}
+                </div>
             </div>
         </div>
     </div>
 </nav>
 
 
-<div class="container shadow-lg p-3 mb-5 rounded">
+<div class="container shadow-lg p-3 mb-5 rounded main-content">
+   <div class="toast-container position-fixed top-0 end-0 p-3">
+{% with messages = get_flashed_messages() %}
+    {% for msg in messages %}
+    <div class="toast show" role="alert">
+        <div class="toast-header">
+            <strong class="me-auto">მესიჯი მოგივიდა ძმაო</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+        </div>
+        <div class="toast-body">
+            {{ msg }}
+        </div>
+    </div>
+    {% endfor %}
+{% endwith %}
+</div>
     {%block content%}
     {%endblock%}
 </div>

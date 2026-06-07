@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %} Add History {% endblock %}
+
+
+{%block content%}
+
+<div class="container">
+    {% for errors in form.errors.values() %}
+    <div class="alert alert-danger">
+        {% for error in errors%}
+            {{error}}
+        {% endfor %}
+    </div>
+    {% endfor %}
+</div>
+
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow-sm" style="width: 100%; max-width: 400px; border-radius: 15px;">
+        <div class="card-body p-4">
+            <h3 class="text-center mb-4">add history</h3>
+            <form method="POST" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                <div class="mb-3">
+                    <label class="form-label">Image</label>
+                    {{ form.image(class="form-control", placeholder=form.image.label.text) }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Title</label>
+                    {{ form.history_title(class="form-control", placeholder=form.history_title.label.text) }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Description</label>
+                    {{ form.description(class="form-control", placeholder=form.description.label.text) }}
+                </div>
+                <div class="d-grid mt-4">
+                    <button type="submit" class="btn btn-primary">Add History</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{%endblock%}
+
+
